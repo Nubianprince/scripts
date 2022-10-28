@@ -19,9 +19,6 @@ echo -e $P "What is  your name (Username)" $N; sleep 0.1;
 read -r main
 clear
 
-#export DEVICE=$code
-#export OEM=$vendor
-
 # Build Target
 ## "recoveryimage" - for A-Only Devices without using Vendor Boot
 ## "bootimage" - for A/B devices without recovery partition (and without vendor boot)
@@ -35,7 +32,6 @@ export OUTPUT="OrangeFox*.zip"
 DEPS=(
     "https://github.com/OrangeFoxRecovery/Avatar.git misc"
 )
-
 
 # Magisk
 ## Use the Latest Release of Magisk for the OrangeFox addon
@@ -51,14 +47,14 @@ echo  "Device Configuration Options
  2 : You don't have a config file and now we will create it for you and will use it later when rebuilding Ofox
  -------------------------------------------------------------------------------------------------------------- "
 
- read Ans3
+ read A2
 
- if [ $Ans3 = 1 ]
+ if [ $A2 = 1 ]
  then
  source $SCRIPT_DIR/configs/"$DEVICE"_ofconfig
  echo " Done exporting your Device Specific settings "
-echo "$linebreak"
- elif [ $Ans3 = 2 ]
+ echo "$linebreak"
+ elif [ $A2= 2 ]
  then
  echo " Lets create a config for you to use for you device export settings "
  nano $SCRIPT_DIR/configs/"$DEVICE"_ofconfig
@@ -153,8 +149,8 @@ echo -e $Y " Is this a clean build
  2 : No
  -------------------------------------------------------------------------------------------------------------- " $N
 
-read -r Ans1
-if [[ "${Ans1}" = 1 ]]; then
+read -r A1
+if [[ "${A1}" = 1 ]]; then
   make clean
 fi
 
